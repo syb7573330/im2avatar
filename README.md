@@ -30,19 +30,19 @@ python train_color.py --cat_id 02958343
 ```
 
 ## Inference
-* Run shape inference script for car category:
+* To generate testing shape volumes for car category:
 ``` bash
 python inference_shape.py --cat_id 02958343
 ```
 
-* Run color inference script for car category:
+* To generate testing color volumes for car category:
 ``` bash
 python inference_color.py --cat_id 02958343
 ```
 
 ## Eval
 After generating all the shape and color volumes, evaluate surface PSNR and IoU.
-Remember to change category id within each file.
+Please change the category id correspondingly within each file!
 * Evaluate surface PSNR:
 ``` bash
 python eval_surface_psnr.py
