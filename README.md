@@ -6,16 +6,15 @@ This work reconstructs colorful 3D model from a single-view image. We tested the
 <img src='./misc/demo_teaser.png' width=800>
 
 ## Data
-We provided processed ground truth 3D color and 2D-to-3D appearance flow data. The data will be automatically downloaded for the first time running training script. Both color data and flow data are stored as 3D volumes, but with different channels (color data has 3 channels and flow data owns 2 channels). 
-+ Color data ranges from 0 to 1 to represent normalized colors for occupied surface voxels, and uses -1 for empty voxels.
-+ Flow data ranges from 0 to 1 to represent normalized coordinates in the 2D images for occupied surface voxels, and uses -1 for empty voxels.
+We provided processed ground truth 3D color and 2D-to-3D appearance flow data. The data will be automatically downloaded for the first time running training script. Both color data and flow data are stored as 3D volumes, but with different channels (color data has 3 channels and flow data owns 2 channels). Color data ranges from 0 to 1 to represent normalized colors for occupied surface voxels, and uses -1 for empty voxels. Flow data ranges from 0 to 1 to represent normalized coordinates in the 2D images for occupied surface voxels, and uses -1 for empty voxels. For each 3D model, 12 images are provided from different viewpoints. The data indices used for training, validating and testing can be found in the **data_list** folder. Specifically, the processed ShapeNet subdataset can be downloaded from [here](https://www.dropbox.com/s/s03fc1rx4ljkhix/ShapeNetCore_im2avatar.tar.gz), and Colorful Human dataset can be downloaded from [here](https://www.dropbox.com/s/imgiu8xump2zlvm/human_im2avatar.tar.gz).
 
 <img src='./misc/demo_data.png' width=800>
 
 ## Requirements
 * [TensorFlow](https://www.tensorflow.org/)
 
-## Train
+## ShapeNet Subdataset
+### Train
 The model is trained per category, change the category id when working on different categories.
 
 |    Category   |      Id       | 
@@ -36,7 +35,7 @@ python train_shape.py --cat_id 02958343
 python train_color.py --cat_id 02958343
 ```
 
-## Inference
+### Inference
 * To generate testing shape volumes for car category:
 ``` bash
 python inference_shape.py --cat_id 02958343
@@ -47,7 +46,7 @@ python inference_shape.py --cat_id 02958343
 python inference_color.py --cat_id 02958343
 ```
 
-## Eval
+### Eval
 After generating all the shape and color volumes, evaluate surface PSNR and IoU.
 Please change the category id correspondingly within each file!
 * Evaluate surface PSNR:
@@ -59,6 +58,30 @@ python eval_surface_psnr.py
 ``` bash
 python eval_iou.py
 ```
+
+## Colorful Human Dataset
+### Train
+* Run shape training script:
+``` bash
+python train_shape_human.py
+```
+
+* Run color training script:
+``` bash
+python train_color_human.py
+```
+
+### Inference
+* To generate testing shape volumes:
+``` bash
+python inference_shape_human.py
+```
+
+* To generate testing color volumes:
+``` bash
+python inference_color_human.py
+```
+
 
 ## Citation
 Please cite this paper if you want to use it in your work,
