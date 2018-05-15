@@ -1,12 +1,19 @@
-# im2avatar
-This work reconstructs colorful 3D models from single-view iamges. We tested the proposed framework on [ShapeNet](https://www.shapenet.org) subdatabase and selected 3D human meshes from [MakeHuman](http://www.makehuman.org). 
-This project is summarized in the paper ["Im2Avatar: Colorful 3D Reconstruction from a Single Image"](https://arxiv.org/pdf/1804.06375.pdf).
+# Im2Avatar: Colorful 3D Reconstruction from a Single Image
+This work reconstructs colorful 3D model from a single-view image. We tested the proposed framework on [ShapeNet](https://www.shapenet.org) sub-database and selected 3D human meshes from [MakeHuman](http://www.makehuman.org). 
+
+[[Project]](https://liuziwei7.github.io/projects/Im2Avatar) [[Paper]](https://arxiv.org/abs/1804.06375)
+
+<img src='./misc/demo_teaser.png' width=800>
 
 ## Data
-We provided processed ground truth 3D color and 2D-to-3D appearance flow data. The data will be automatically downloaded for the first time running training script. Both color data and flow data are stored as 3D volumes, but with differnt channels (color data has 3 channels and flow data owns 2 channels). 
+We provided processed ground truth 3D color and 2D-to-3D appearance flow data. The data will be automatically downloaded for the first time running training script. Both color data and flow data are stored as 3D volumes, but with different channels (color data has 3 channels and flow data owns 2 channels). 
 + Color data ranges from 0 to 1 to represent normalized colors for occupied surface voxels, and uses -1 for empty voxels.
 + Flow data ranges from 0 to 1 to represent normalized coordinates in the 2D images for occupied surface voxels, and uses -1 for empty voxels.
 
+<img src='./misc/demo_data.png' width=800>
+
+## Requirements
+* [TensorFlow](https://www.tensorflow.org/)
 
 ## Train
 The model is trained per category, change the category id when working on different categories.
